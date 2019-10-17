@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    <TieredCompilation>true</TieredCompilation>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Smab.DoodlePoll</PackageId>
+    <Title>Smab.DoodlePoll</Title>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Simon Brookes (@smabuk)</Authors>
+    <Company></Company>
+    <Description>Package to handle interactions with DoodlePoll.com</Description>
+    <Summary>Package to handle interactions with DoodlePoll.com</Summary>
+    <PackageProjectUrl>https://github.com/smabuk/Smab.DoodlePoll</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/smabuk/Smab.DoodlePoll</RepositoryUrl>
+    <PackageTags>doodlepoll</PackageTags>
+    <PackageReleaseNotes>Remove a lot of possible nulls</PackageReleaseNotes>
+    <VersionPrefix>0.9.1</VersionPrefix>
+    <Preview></Preview>
+    <VersionSuffix Condition="'$(Preview)' != ''">$(Preview).$([System.DateTime]::get_Now().get_Year())$([System.DateTime]::get_Now().get_Month().ToString("D2"))$([System.DateTime]::get_Now().get_Day().ToString("D2"))-$([System.DateTime]::get_Now().get_Hour().ToString("D2"))$([System.DateTime]::get_Now().get_Minute().ToString("D2"))</VersionSuffix>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RootNamespace>Smab.DoodlePoll</RootNamespace>
+    <Product>Smab.DoodlePoll</Product>
+    <AssemblyName>Smab.DoodlePoll</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
+  </ItemGroup>
+
+</Project>

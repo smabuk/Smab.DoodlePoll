@@ -1,0 +1,56 @@
+﻿@page
+@using Smab.DoodlePoll.Models;
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Doodle poll(s)";
+}
+
+<p>@Model.Message</p>
+<div class="row">
+    @foreach (var sess in Model.Sessions.OrderByDescending(s => s.State).ThenBy(s => s.Start))
+    {
+        <div class="col-12 col-md-6 col-xl @if (sess.State == "closed") { <text>text-muted</text> }">
+            <h4><a href="https://doodle.com/poll/@sess.DoodlePollId" target="_blank" rel="noopener"><i class="fas fa-external-link-square-alt"></i></a> @sess.Name</h4>
+            <div class="row">
+                <div class="col-12">@sess.Start.Day @sess.Start.ToString(" MMMM yyyy")</div>
+                <div class="col-12">@sess.Description</div>
+                <div class="col-12"><span>@sess.YesCount <i class="fas fa-thumbs-up text-success"></i> <span class="d-xl-none">and </span>@sess.NoCount <i class="fas fa-thumbs-down text-danger"></i> of @sess.MaxNoOfAttendees</span><span class="text-secondary"> @sess.UpDated.ToString("ddd yyyy-MM-dd HH:mm:ss")</span></div>
+            </div>
+            <table class="table table-bordered table-sm @if (sess.State == "closed") { <text>text-muted</text> }">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Attending</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in sess.Attendees.OrderBy(i => i.Name))
+                    {
+                        <tr class="">
+                            <td>@item.Index</td>
+                            <td>
+                                @item.Name.Replace("*", "").Trim()@if (item.Name.Contains('*'))
+                                {<sup>*</sup>}
+                            </td>
+
+                            <td><i class="fa @(item.Attending == VoteType.Maybe ? "fas fa-question text-secondary" : (item.Attending == VoteType.Yes ? "fas fa-thumbs-up text-success" : "fas fa-thumbs-down text-danger"))"> </i>@item.Attending</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @if (sess.HasComments)
+            {
+                <div class="container">
+                    <ul>
+                        @foreach (var item in sess.Comments.OrderBy(c => c.TimeStamp))
+                        {
+                            <li>@item.TimeStamp  @item.Author - @item.Text</li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+</div>
