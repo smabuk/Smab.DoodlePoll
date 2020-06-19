@@ -10,7 +10,7 @@ namespace Smab.DoodlePoll.Helpers
 			=> reader.GetDouble().FromUnixDate();
 
 		public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
-			=> throw new NotImplementedException();
+			=> writer.WriteNumberValue((value - Unix.Epoch).TotalSeconds);
 	}
 
 	internal static class Unix

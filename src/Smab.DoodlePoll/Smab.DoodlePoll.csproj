@@ -19,8 +19,8 @@
     <PackageProjectUrl>https://github.com/smabuk/Smab.DoodlePoll</PackageProjectUrl>
     <RepositoryUrl>https://github.com/smabuk/Smab.DoodlePoll</RepositoryUrl>
     <PackageTags>doodlepoll</PackageTags>
-    <PackageReleaseNotes>Change publishing pipeline</PackageReleaseNotes>
-    <VersionPrefix>0.9.2</VersionPrefix>
+    <PackageReleaseNotes>Improve Json Conversion</PackageReleaseNotes>
+    <VersionPrefix>0.9.3</VersionPrefix>
     <Preview></Preview>
     <VersionSuffix Condition="'$(Preview)' != '' And '$(BUILD_BUILDNUMBER)' == ''">$(Preview).$([System.DateTime]::get_Now().get_Year())$([System.DateTime]::get_Now().get_Month().ToString("D2"))$([System.DateTime]::get_Now().get_Day().ToString("D2"))-$([System.DateTime]::get_Now().get_Hour().ToString("D2"))$([System.DateTime]::get_Now().get_Minute().ToString("D2"))</VersionSuffix>
     <VersionSuffix Condition="'$(Preview)' != '' And '$(BUILD_BUILDNUMBER)' != ''">$(Preview).$(BUILD_BUILDNUMBER)</VersionSuffix>
